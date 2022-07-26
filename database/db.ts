@@ -1,38 +1,17 @@
-import mongoose from 'mongoose';
+import { DataSource } from 'typeorm';
+import { User } from '../models/User';
 
-/**
- * 0 = disconnected
- * 1 = connected
- * 2 = connecting
- * 3 = disconnected
- */
-const mongoConnection = {
-    isConnected: 0
-};
+const AppDataSource = new DataSource({
+    type: 'mysql',
+    host: 'localhost',
+    port: 3306,
+    username: 'user',
+    password: 'secr3t!',
+    database: 'test-database',
+    entities: [
+        User
+    ],
+    synchronize: true
+});
 
-export const connect = async () => {
-    if (mongoConnection.isConnected === 1) {
-        return;
-    }
-
-    if (mongoose.connections.length > 0) {
-        mongoConnection.isConnected = mongoose.connections[0].readyState;
-
-        if (mongoConnection.isConnected === 1) {
-            return;
-        }
-
-        await mongoose.disconnect();
-    }
-
-    await mongoose.connect(process.env.MONGO_URL || '');
-    mongoConnection.isConnected = 1;
-}
-
-export const disconnect = async () => {
-    if (process.env.ENVIRONMENT === 'development') return;
-
-    if (mongoConnection.isConnected === 0) return;
-
-    await mongoose.disconnect();
-}
+export default AppDataSource;

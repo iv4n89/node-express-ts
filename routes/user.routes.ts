@@ -1,19 +1,13 @@
 import { Router } from 'express';
-import { check } from 'express-validator';
-import { testGet, getAllUser, createUser, getOneUserByEmail, getOneUserById, updateUserById, deleteUserById } from '../controllers/user.controller';
-import { validateFields } from '../middlewares/validateFields';
+import { createUser, getAllUsers, getOneUser, updateOneUser } from '../controllers/user.controller';
+
+const use = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next);
 
 const router = Router();
+router.post('/create', use(createUser));
+router.get('/:id', use(getOneUser));
+router.post('/', use(getAllUsers));
+router.put('/:id', use(updateOneUser));
 
-router.get('/test', testGet);
-router.get('/all', getAllUser);
-router.post('/create', [
-    check('email', 'Email is not valid').isEmail(),
-    validateFields
-], createUser);
-router.post('/by-email', getOneUserByEmail);
-router.get('/:id', getOneUserById);
-router.put('/:id', updateUserById);
-router.delete('/:id', deleteUserById);
 
 export default router;
