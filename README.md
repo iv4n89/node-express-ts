@@ -67,11 +67,13 @@ Tag (group) for the controller methods. It will organize the documentation in gr
 Define the base route for the controller. Ej: We define @Route('user'), and a get route as @Get('all'). We will find in the docs the route
 for get inside this controller is __/base_url/user/all__.
 
+```
 ```@Get('route')```
 ```@Post('route')```
 ```@Put('route')```
 ```@Delete('route')```
 ```@Patch('route')```
+```
 Define the method route and type
 
 
