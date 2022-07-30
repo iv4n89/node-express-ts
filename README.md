@@ -2,20 +2,21 @@
 
 # <span style="color: skyblue;">Index</span>
 
-1. [About this project](#span-stylecolor-lightblueadd--d-to-the-instruction-to-run-it-detachedspan)
-    1. [How the CRUD works](#span-stylecolor-lightbluehow-the-crud-worksspan)
-    2. [Folder structure](#span-stylecolor-lightbluefolder-structurespan)
-2. [How to run docker containers](#span-stylecolor-skybluehow-to-run-docker-containersspan)
-3. [Start the server](#span-stylecolor-skybluestart-the-serverspan)
-4. [Swagger documentation](#span-stylecolor-skyblueswagger-documentationspan)
-5. [Run the tests](#span-stylecolor-skybluerun-testsspan)
-6. [Typescript snippets](#span-stylecolor-skybluetypescript-snippetsspan)
-    1. [Controller creation snippet](#span-stylecolor-lightbluecontroller-creation-snippetspan)
-    2. [Router creation snippet](#span-stylecolor-lightbluerouter-creation-snippetspan)
-    3. [Service creation snippet](#span-stylecolor-lightblueservice-creation-snippetspan)
-7. [Author](#span-stylecolor-skyblueauthorspan)
+1. [About this project](#about)
+    1. [How the CRUD works](#how-crud-works)
+    2. [Folder structure](#folder-structure)
+2. [How to run docker containers](#how-run-docker)
+3. [Start the server](#start-server)
+4. [Swagger documentation](#swagger)
+	1. [Creating and editing docs](#swagger-docs)
+5. [Run the tests](#run-tests)
+6. [Typescript snippets](#snippets)
+    1. [Controller creation snippet](#controller-creation)
+    2. [Router creation snippet](#router-creation)
+    3. [Service creation snippet](#service-creation)
+7. [Author](#author)
 
-# <span  style="color: skyblue;">About this project</span>
+# <span name="about" style="color: skyblue;">About this project</span>
 
 This is a base user CRUD with groups and permissions. It can be used as a base to more complex project.
 
@@ -32,7 +33,7 @@ expo
 ```
 Visit __https://typeorm.io/data-source-options__ for further information.
 
-## <span style="color: lightblue;">How the CRUD works</span>
+## <span name="how-crud-works" style="color: lightblue;">How the CRUD works</span>
 
 Users, group of users and permissions can be created. An user can be part of more than one group, a group can
 has more than one permission and a permission can be present in more than one user or group.
@@ -56,7 +57,7 @@ All permissions have the same structure:
 ```Export``` <span style="color: lightgreen;">=></span>  Permission to export data
 
 
-## <span style="color: lightblue;">Folder structure</span>
+## <span name="folder-structure" style="color: lightblue;">Folder structure</span>
 
 The project has a modular structure, so it can be easily scalable and expand it.
 
@@ -136,7 +137,7 @@ The permission helper provide a method to entity classes to easily update permis
 ```
 
 
-# <span style="color: skyblue">How to run docker containers</span>
+# <span name="how-run-docker" style="color: skyblue">How to run docker containers</span>
 
 ## <span style="color: darkgreen;">Copy .env.example as .env and fulfill the needed vars</span>
 
@@ -152,7 +153,7 @@ $ docker-compose down
 
 ### <span style="color: darkgreen;">Add -d to the instruction to run it detached</span>
 
-# <span style="color: skyblue;">Start the server</span>
+# <span name="start-server" style="color: skyblue;">Start the server</span>
 
 ## <span style="color: lightblue;">Install all dependencies</span>
 Before we can start our server, we need to install all needed node dependencies: 
@@ -161,7 +162,7 @@ Before we can start our server, we need to install all needed node dependencies:
 $ npm i
 ```
 
-## <span style="color: lightblue;">Run the server</span>
+## <span name="run-server" style="color: lightblue;">Run the server</span>
 Start the server without live reloading: 
 ```
 $ npm run start
@@ -173,7 +174,7 @@ $ npm run dev
 ```
 
 
-# <span style="color: skyblue;">Swagger documentation</span>
+# <span name="swagger" style="color: skyblue;">Swagger documentation</span>
 This project comes with swagger API documentation.
 Run the following command to generate it before start running the server:
 ```
@@ -191,7 +192,7 @@ __http://{base_url}/docs__
 If the project has been initialized with the default values, just go to the url:
 __http://localhost:8000/docs__
 
-# <span style="color: skyblue;">Creating and editing docs</span>
+# <span name="swagger-docs" style="color: skyblue;">Creating and editing docs</span>
 Docs are created in controllers as decorators for the functions:
 
 ```
@@ -239,7 +240,7 @@ method_name(@Query() id: number) {}
 ```
 
 
-# <span style="color: skyblue;">Run tests</span>
+# <span name="run-tests" style="color: skyblue;">Run tests</span>
 Test are included in this project, under the folder **__tests__**.
 
 To run the tests use the following instruction:
@@ -252,7 +253,7 @@ To run the tests in watch mode (live reloading of test execution), use:
 $ npm run test:watch
 ```
 
-# <span style="color: skyblue;">Typescript snippets</span>
+# <span name="snippets" style="color: skyblue;">Typescript snippets</span>
 
 The following snippets can be used to save time on the creation of new components and endpoints for this CRUD.
 They may be added to our __Visual Studio Code__ personal snippets, as personal typescript snippets.
@@ -261,7 +262,7 @@ To add them we must press __control + shift + p__ and select __Configure user sn
 
 Note that once any of these snippets are used, a name for the component is required. Tab must be pressed once a name is wrote in order to get text transformations to work.
 
-## <span style="color: lightblue">Controller creation snippet</span>
+## <span name="controller-creation" style="color: lightblue">Controller creation snippet</span>
 
 ```
 "Node custom controller class with tsoa": {
@@ -373,7 +374,7 @@ Note that once any of these snippets are used, a name for the component is requi
 		"description": "Node custom controller snippet"
 ```
 
-## <span style="color: lightblue">Router creation snippet</span>
+## <span name="router-creation" style="color: lightblue">Router creation snippet</span>
 
 ```
 "Custom router": {
@@ -397,7 +398,7 @@ Note that once any of these snippets are used, a name for the component is requi
 	},
 ```
 
-## <span style="color: lightblue">Service creation snippet</span>
+## <span name="service-creation" style="color: lightblue">Service creation snippet</span>
 
 ```
 "Custom service": {
@@ -424,5 +425,5 @@ Note that once any of these snippets are used, a name for the component is requi
 	},
 ```
 
-# <span style="color: skyblue;">Author</span>
+# <span name="author" style="color: skyblue;">Author</span>
 Ivan Betanzos Macias
