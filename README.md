@@ -61,29 +61,29 @@ All permissions have the same structure:
 
 The project has a modular structure, so it can be easily scalable and expand it.
 
-<span style="color: lightgreen;">__ tests __</span>
+`__tests__`
 
 All unit tests can be found here
 
-<span style="color: lightgreen;">controllers</span>
+`controllers`
 
 Controllers for endpoints. A base controller interface can be found.
 
 Find at the end of this README a snippet to quickly create new controllers.
 
-<span style="color: lightgreen;">database</span>
+`database`
 
 All database related configuration files. A __db__ file can be found here. It contains all data source objects for this application
 
-<span style="color: lightgreen;">Doc</span>
+`Doc`
 
 All documentation for this project
 
-<span style="color: lightgreen;">interfaces</span>
+`interfaces`
 
 All interfaces that work as types can be stored here
 
-<span style="color: lightgreen;">middlewares</span>
+`middlewares`
 
 All middlewares can be found here.
 
@@ -97,22 +97,22 @@ __parseResponse__ <span style="color: lightgreen;">=></span> Response intercepto
 
 __validateFields__ <span style="color: lightgreen;">=></span> Validation for the body request data. The validation and possible error response happens before the request reach the controller.
 
-<span style="color: lightgreen;">models</span>
+`models`
 
 All entity classes can be found here.
 A base entity class is provided. Extending it will give to the inheriting entity the basics to work (id and timestamps)
 
-<span style="color: lightgreen;">routes</span>
+`routes`
 
 All routes and route objects can be found here.
 A base route class is provided. It contains all basic CRUD routes. The inheriting class can instantiate all routes just calling to its __init__ method.
 Find at the end of this README a snippet to create quickly a CRUD route class.
 
-<span style="color: lightgreen;">Server</span>
+`Server`
 
 Class that contains all express server configuration
 
-<span style="color: lightgreen;">services</span>
+`services`
 
 All services can be found here.
 
@@ -120,7 +120,7 @@ This project comes with a base service interface and a base service abstract cla
 
 Find at the end of this project a snippet to create quickly a service.
 
-<span style="color: lightgreen;">util</span>
+`util`
 
 All util functions (helpers) can be found here.
 
