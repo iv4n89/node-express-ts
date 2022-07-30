@@ -1,0 +1,2806 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"Country": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"created_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"updated_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"deleted_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"name": {
+						"type": "string"
+					},
+					"communities": {
+						"items": {
+							"$ref": "#/components/schemas/Community"
+						},
+						"type": "array"
+					},
+					"addresses": {
+						"items": {
+							"$ref": "#/components/schemas/Address"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"created_at",
+					"updated_at",
+					"deleted_at",
+					"name",
+					"communities",
+					"addresses"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Community": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"created_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"updated_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"deleted_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"name": {
+						"type": "string"
+					},
+					"country": {
+						"$ref": "#/components/schemas/Country"
+					},
+					"provinces": {
+						"items": {
+							"$ref": "#/components/schemas/Province"
+						},
+						"type": "array"
+					},
+					"addresses": {
+						"items": {
+							"$ref": "#/components/schemas/Address"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"created_at",
+					"updated_at",
+					"deleted_at",
+					"name",
+					"country",
+					"provinces",
+					"addresses"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Province": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"created_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"updated_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"deleted_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"name": {
+						"type": "string"
+					},
+					"community": {
+						"$ref": "#/components/schemas/Community"
+					},
+					"cities": {
+						"$ref": "#/components/schemas/City"
+					},
+					"addresses": {
+						"items": {
+							"$ref": "#/components/schemas/Address"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"created_at",
+					"updated_at",
+					"deleted_at",
+					"name",
+					"community",
+					"cities",
+					"addresses"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Address": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"created_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"updated_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"deleted_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"country": {
+						"$ref": "#/components/schemas/Country"
+					},
+					"community": {
+						"$ref": "#/components/schemas/Community"
+					},
+					"province": {
+						"$ref": "#/components/schemas/Province"
+					},
+					"city": {
+						"$ref": "#/components/schemas/City"
+					},
+					"street_name": {
+						"type": "string"
+					},
+					"street_number": {
+						"type": "string"
+					},
+					"floor": {
+						"type": "number",
+						"format": "double"
+					},
+					"door": {
+						"type": "string"
+					},
+					"zip_code": {
+						"type": "string"
+					},
+					"user": {
+						"$ref": "#/components/schemas/User"
+					},
+					"is_active": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"id",
+					"created_at",
+					"updated_at",
+					"deleted_at",
+					"country",
+					"community",
+					"province",
+					"city",
+					"street_name",
+					"street_number",
+					"floor",
+					"door",
+					"zip_code",
+					"user",
+					"is_active"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Timestamp": {
+				"type": "string",
+				"description": "Timestamp."
+			},
+			"City": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"created_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"updated_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"deleted_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"name": {
+						"type": "string"
+					},
+					"province": {
+						"$ref": "#/components/schemas/Province"
+					},
+					"addresses": {
+						"items": {
+							"$ref": "#/components/schemas/Address"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"created_at",
+					"updated_at",
+					"deleted_at",
+					"name",
+					"province",
+					"addresses"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"User": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"created_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"updated_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"deleted_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"name": {
+						"type": "string"
+					},
+					"last_name": {
+						"type": "string"
+					},
+					"username": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"personal_email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"password_token": {
+						"type": "string"
+					},
+					"birth_date": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"gender": {
+						"type": "number",
+						"format": "double"
+					},
+					"mobile_phone": {
+						"type": "string"
+					},
+					"home_phone": {
+						"type": "string"
+					},
+					"user_image": {
+						"type": "string"
+					},
+					"bio": {
+						"type": "string"
+					},
+					"is_active": {
+						"type": "number",
+						"format": "double"
+					},
+					"addresses": {
+						"items": {
+							"$ref": "#/components/schemas/Address"
+						},
+						"type": "array"
+					},
+					"groups": {
+						"items": {
+							"$ref": "#/components/schemas/Group"
+						},
+						"type": "array"
+					},
+					"permissions": {
+						"items": {
+							"$ref": "#/components/schemas/Permission"
+						},
+						"type": "array"
+					},
+					"job_area": {
+						"$ref": "#/components/schemas/JobArea"
+					},
+					"position": {
+						"$ref": "#/components/schemas/Position"
+					},
+					"languages": {
+						"items": {
+							"$ref": "#/components/schemas/Language"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"created_at",
+					"updated_at",
+					"deleted_at",
+					"name",
+					"last_name",
+					"username",
+					"email",
+					"personal_email",
+					"password",
+					"password_token",
+					"birth_date",
+					"gender",
+					"mobile_phone",
+					"home_phone",
+					"user_image",
+					"bio",
+					"is_active",
+					"addresses",
+					"groups",
+					"permissions",
+					"job_area",
+					"position",
+					"languages"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Permission": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"created_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"updated_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"deleted_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"name": {
+						"type": "string"
+					},
+					"parent": {
+						"$ref": "#/components/schemas/Permission"
+					},
+					"children": {
+						"items": {
+							"$ref": "#/components/schemas/Permission"
+						},
+						"type": "array"
+					},
+					"groups": {
+						"items": {
+							"$ref": "#/components/schemas/Group"
+						},
+						"type": "array"
+					},
+					"users": {
+						"items": {
+							"$ref": "#/components/schemas/User"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"created_at",
+					"updated_at",
+					"deleted_at",
+					"name",
+					"parent",
+					"children",
+					"groups",
+					"users"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Group": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"created_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"updated_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"deleted_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"name": {
+						"type": "string"
+					},
+					"is_active": {
+						"type": "number",
+						"format": "double"
+					},
+					"users": {
+						"items": {
+							"$ref": "#/components/schemas/User"
+						},
+						"type": "array"
+					},
+					"permissions": {
+						"items": {
+							"$ref": "#/components/schemas/Permission"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"created_at",
+					"updated_at",
+					"deleted_at",
+					"name",
+					"is_active",
+					"users",
+					"permissions"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"JobArea": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"created_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"updated_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"deleted_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"name": {
+						"type": "string"
+					},
+					"is_active": {
+						"type": "number",
+						"format": "double"
+					},
+					"users": {
+						"items": {
+							"$ref": "#/components/schemas/User"
+						},
+						"type": "array"
+					},
+					"positions": {
+						"items": {
+							"$ref": "#/components/schemas/Position"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"created_at",
+					"updated_at",
+					"deleted_at",
+					"name",
+					"is_active",
+					"users",
+					"positions"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Position": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"created_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"updated_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"deleted_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"name": {
+						"type": "string"
+					},
+					"is_active": {
+						"type": "number",
+						"format": "double"
+					},
+					"job_area": {
+						"$ref": "#/components/schemas/JobArea"
+					},
+					"users": {
+						"items": {
+							"$ref": "#/components/schemas/User"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"created_at",
+					"updated_at",
+					"deleted_at",
+					"name",
+					"is_active",
+					"job_area",
+					"users"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Language": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"created_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"updated_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"deleted_at": {
+						"$ref": "#/components/schemas/Timestamp"
+					},
+					"name": {
+						"type": "string"
+					},
+					"users": {
+						"items": {
+							"$ref": "#/components/schemas/User"
+						},
+						"type": "array"
+					},
+					"is_active": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"id",
+					"created_at",
+					"updated_at",
+					"deleted_at",
+					"name",
+					"users",
+					"is_active"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DeleteResult": {
+				"description": "Result object returned by DeleteQueryBuilder execution.",
+				"properties": {
+					"raw": {
+						"description": "Raw SQL result returned by executed query."
+					},
+					"affected": {
+						"type": "number",
+						"format": "double",
+						"nullable": true,
+						"description": "Number of affected rows/documents\nNot all drivers support this"
+					}
+				},
+				"required": [
+					"raw"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "node_ts_api_rest",
+		"version": "1.0.0",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/user/store": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/User"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {
+												"id": 1,
+												"name": "exampleName",
+												"last_name": "exampleLasName",
+												"username": "example",
+												"email": "email@example.com",
+												"birth_date": "1989-01-01T00:00:00.000Z",
+												"bio": null,
+												"gender": null,
+												"home_phone": null,
+												"mobile_phone": null,
+												"user_image": null,
+												"is_active": 1
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Create a new use into the database",
+				"tags": [
+					"Users"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"description": "All needed attributes to create the user",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/User",
+								"description": "All needed attributes to create the user"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/user/{id}": {
+			"get": {
+				"operationId": "GetOne",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/User"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 200,
+											"result": {
+												"id": 1,
+												"name": "exampleName",
+												"last_name": "exampleLasName",
+												"username": "example",
+												"email": "email@example.com",
+												"birth_date": "1989-01-01T00:00:00.000Z",
+												"bio": null,
+												"gender": null,
+												"home_phone": null,
+												"mobile_phone": null,
+												"user_image": null,
+												"is_active": 1
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Find and get an user by id",
+				"tags": [
+					"Users"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "User id to find",
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/User"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 200,
+											"result": {
+												"id": 1,
+												"name": "exampleName",
+												"last_name": "exampleLasName",
+												"username": "example",
+												"email": "email@example.com",
+												"birth_date": "1989-01-01T00:00:00.000Z",
+												"bio": null,
+												"gender": null,
+												"home_phone": null,
+												"mobile_phone": null,
+												"user_image": null,
+												"is_active": 1
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/User"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Delete",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/DeleteResult"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 200,
+											"result": null
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/user": {
+			"get": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/User"
+									},
+									"type": "array"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 200,
+											"result": [
+												{
+													"id": 1,
+													"name": "exampleName",
+													"last_name": "exampleLasName",
+													"username": "example",
+													"email": "email@example.com",
+													"birth_date": "1989-01-01T00:00:00.000Z",
+													"bio": null,
+													"gender": null,
+													"home_phone": null,
+													"mobile_phone": null,
+													"user_image": null,
+													"is_active": 1
+												},
+												{
+													"id": 2,
+													"name": "exampleName2",
+													"last_name": "exampleLasName2",
+													"username": "example2",
+													"email": "email2@example.com",
+													"birth_date": "1989-01-01T00:00:00.000Z",
+													"bio": null,
+													"gender": null,
+													"home_phone": null,
+													"mobile_phone": null,
+													"user_image": null,
+													"is_active": 1
+												}
+											]
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get all users form database",
+				"tags": [
+					"Users"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/auth/login": {
+			"post": {
+				"operationId": "Login",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"user": {
+											"$ref": "#/components/schemas/User"
+										},
+										"token": {}
+									},
+									"required": [
+										"user",
+										"token"
+									],
+									"type": "object"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 200,
+											"result": {
+												"token": "token_generado",
+												"user": {
+													"id": 1,
+													"name": "exampleName",
+													"last_name": "exampleLasName",
+													"username": "example",
+													"email": "email@example.com",
+													"birth_date": "1989-01-01T00:00:00.000Z",
+													"bio": null,
+													"gender": null,
+													"home_phone": null,
+													"mobile_phone": null,
+													"user_image": null,
+													"is_active": 1
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Take from database the user with the email given and validate the password provided.\nIf both of them are correct, generate a token to use in all api endpoints",
+				"tags": [
+					"Authorization"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"password": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"password",
+									"email"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/register": {
+			"post": {
+				"operationId": "Register",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"user": {
+											"$ref": "#/components/schemas/User"
+										},
+										"token": {}
+									},
+									"required": [
+										"user",
+										"token"
+									],
+									"type": "object"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 200,
+											"result": {
+												"token": "generated token",
+												"user": {
+													"id": 1,
+													"name": "exampleName",
+													"last_name": "exampleLasName",
+													"username": "example",
+													"email": "email@example.com",
+													"birth_date": "1989-01-01T00:00:00.000Z",
+													"bio": null,
+													"gender": null,
+													"home_phone": null,
+													"mobile_phone": null,
+													"user_image": null,
+													"is_active": 1
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Create a new user in the database and get it authenticated",
+				"tags": [
+					"Authorization"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"description": "All attributes from body request to create the user",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/User",
+								"description": "All attributes from body request to create the user"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/address/store": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Address"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Create a new address into the database",
+				"tags": [
+					"Addresses"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"description": "Address attributes",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Address",
+								"description": "Address attributes"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/address/{id}": {
+			"get": {
+				"operationId": "GetOne",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Address"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get an existing address",
+				"tags": [
+					"Addresses"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "Address id to get",
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Address"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Update an existing address",
+				"tags": [
+					"Addresses"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "Address id to update",
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "New Address attributes",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Address",
+								"description": "New Address attributes"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Delete",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/DeleteResult"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Delete an existing address",
+				"tags": [
+					"Addresses"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "Address id to delete",
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/address": {
+			"post": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Address"
+									},
+									"type": "array"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get all addresses in database",
+				"tags": [
+					"Addresses"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/country/store": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Country"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Create a new Country",
+				"tags": [
+					"Countries"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Country"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/country": {
+			"get": {
+				"operationId": "GetOne",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Country"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get one Country",
+				"tags": [
+					"Countries"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Country"
+									},
+									"type": "array"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"error": false,
+											"message": "Ok",
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get all country",
+				"tags": [
+					"Countries"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/country/{id}": {
+			"put": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Country"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Update one Country",
+				"tags": [
+					"Countries"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Country"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Delete",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/DeleteResult"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Delete one Country",
+				"tags": [
+					"Countries"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/community/store": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Community"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Create a new Community",
+				"tags": [
+					"Communities"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Community"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/community": {
+			"get": {
+				"operationId": "GetOne",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Community"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get one Community",
+				"tags": [
+					"Communities"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Community"
+									},
+									"type": "array"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"error": false,
+											"message": "Ok",
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get all community",
+				"tags": [
+					"Communities"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/community/{id}": {
+			"put": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Community"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Update one Community",
+				"tags": [
+					"Communities"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Community"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Delete",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/DeleteResult"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Delete one Community",
+				"tags": [
+					"Communities"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/province/store": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Province"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Create a new province",
+				"tags": [
+					"Provinces"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Province"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/province/{id}": {
+			"get": {
+				"operationId": "GetOne",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Province"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get one province",
+				"tags": [
+					"Provinces"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Province"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Update a province",
+				"tags": [
+					"Provinces"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Province"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Delete",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/DeleteResult"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Delete a province",
+				"tags": [
+					"Provinces"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/province": {
+			"post": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Province"
+									},
+									"type": "array"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get all provinces",
+				"tags": [
+					"Provinces"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/city/store": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/City"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Create a new City",
+				"tags": [
+					"Cities"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/City"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/city": {
+			"get": {
+				"operationId": "GetOne",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/City"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get one City",
+				"tags": [
+					"Cities"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/City"
+									},
+									"type": "array"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"error": false,
+											"message": "Ok",
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get all city",
+				"tags": [
+					"Cities"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/city/{id}": {
+			"put": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/City"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Update one City",
+				"tags": [
+					"Cities"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/City"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Delete",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/DeleteResult"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Delete one City",
+				"tags": [
+					"Cities"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/group/store": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Group"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Create a new Group",
+				"tags": [
+					"Groups"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Group"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/group": {
+			"get": {
+				"operationId": "GetOne",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Group"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get one Group",
+				"tags": [
+					"Groups"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Group"
+									},
+									"type": "array"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"error": false,
+											"message": "Ok",
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get all group",
+				"tags": [
+					"Groups"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/group/{id}": {
+			"put": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Group"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Update one Group",
+				"tags": [
+					"Groups"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Group"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Delete",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/DeleteResult"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Delete one Group",
+				"tags": [
+					"Groups"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/permission/store": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Permission"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Create a new Permission",
+				"tags": [
+					"Permissions"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Permission"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/permission": {
+			"get": {
+				"operationId": "GetOne",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Permission"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get one Permission",
+				"tags": [
+					"Permissions"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Permission"
+									},
+									"type": "array"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"error": false,
+											"message": "Ok",
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get all permission",
+				"tags": [
+					"Permissions"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/permission/{id}": {
+			"put": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Permission"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Update one Permission",
+				"tags": [
+					"Permissions"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Permission"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Delete",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/DeleteResult"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Delete one Permission",
+				"tags": [
+					"Permissions"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/language/store": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Language"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Create a new Language",
+				"tags": [
+					"Languages"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Language"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/language": {
+			"get": {
+				"operationId": "GetOne",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Language"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get one Language",
+				"tags": [
+					"Languages"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Language"
+									},
+									"type": "array"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"error": false,
+											"message": "Ok",
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get all language",
+				"tags": [
+					"Languages"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/language/{id}": {
+			"put": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Language"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Update one Language",
+				"tags": [
+					"Languages"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Language"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Delete",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/DeleteResult"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "Ok",
+											"error": false,
+											"code": 201,
+											"result": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Delete one Language",
+				"tags": [
+					"Languages"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}

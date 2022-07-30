@@ -6,8 +6,9 @@ export interface BaseResponse<T> extends Response{
     json: Send<BaseJsonResponse<T>, this>;
 }
 
-interface BaseJsonResponse<T> {
-    ok: boolean;
+export interface BaseJsonResponse<T> {
     message: string;
+    error: boolean;
+    code: number;
     result: T | null;
 }

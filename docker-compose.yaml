@@ -1,7 +1,26 @@
 services:
-  testdb:
+# MySQL database container
+  MySQL:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: 'test-database'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'secr3t!'
+      MYSQL_ROOT_PASSWORD: 'secr3t!'
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    container_name: mysql-database
+    ports:
+      - 3306:3306
+    expose:
+      - '3306'
+    volumes:
+      - ./mysql:/var/lib/mysql
+
+# MongoDB database container
+  MongoDB:
     image: mongo:5.0.0
-    container_name: test-database
+    container_name: mongo-database
     ports:
       - 27017:27017
     volumes:

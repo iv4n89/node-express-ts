@@ -1,102 +1,170 @@
-import { response, request, Response, Request } from 'express';
-import { User, UserModel } from '../models/User.model';
-import { BaseResponse } from '../interfaces/response.interface';
-import * as db from '../database/db';
-import { BaseRequest } from '../interfaces/request.interface';
+import {
+  Body, Controller, Delete,
+  Example, Get,
+  Post,
+  Put, Query, Route, Tags
+} from "tsoa";
+import { DeleteResult } from "typeorm";
+import { BaseJsonResponse } from "../interfaces/response.interface";
+import { User } from "../models";
+import userService from "../services/auth/user.service";
+import { BaseController } from "./BaseController";
 
-export const testGet = (req: Request, res: BaseResponse<string> ) => {
-    
-    return res.json({
-        ok: true,
-        message: 'get API - test endpoint',
-        result: 'test'
-    });
-}
+@Tags('Users')
+@Route("api/user")
+export class UserController extends Controller implements BaseController<User> {
+  /**
+   * Create a new use into the database
+   * @param attributes All needed attributes to create the user
+   *
+   */
+  @Example<BaseJsonResponse<Partial<User>>>({
+    message: "Ok",
+    error: false,
+    code: 201,
+    result: {
+      id: 1,
+      name: "exampleName",
+      last_name: "exampleLasName",
+      username: "example",
+      email: "email@example.com",
+      birth_date: new Date("1989-01-01"),
+      bio: null,
+      gender: null,
+      home_phone: null,
+      mobile_phone: null,
+      user_image: null,
+      is_active: 1,
+    },
+  })
+  @Post("/store")
+  public async create(@Body() attributes: User): Promise<User> {
+    return userService.create(attributes);
+  }
 
-export const getAllUser = async (req: Request, res: BaseResponse<User[]>) => {
-    await db.connect();
-    const users = await UserModel.find();
-    await db.disconnect();
+  /**
+   * Find and get an user by id
+   * @param id User id to find
+   *
+   */
+  @Example<BaseJsonResponse<Partial<User>>>({
+    message: "Ok",
+    error: false,
+    code: 200,
+    result: {
+      id: 1,
+      name: "exampleName",
+      last_name: "exampleLasName",
+      username: "example",
+      email: "email@example.com",
+      birth_date: new Date("1989-01-01"),
+      bio: null,
+      gender: null,
+      home_phone: null,
+      mobile_phone: null,
+      user_image: null,
+      is_active: 1,
+    },
+  })
+  /**
+   * @example id 1
+   * @example id 3
+   */
+  @Get("{id}")
+  public async getOne(@Query() id: number): Promise<User> {
+    return userService.getOne(id);
+  }
 
-    res.status(200).json({
-        ok: true,
-        message: 'users',
-        result: users
-    });
-}
+  /**
+   * Get all users form database
+   *
+   */
+  @Example<BaseJsonResponse<Partial<User>[]>>({
+    message: "Ok",
+    error: false,
+    code: 200,
+    result: [
+      {
+        id: 1,
+        name: "exampleName",
+        last_name: "exampleLasName",
+        username: "example",
+        email: "email@example.com",
+        birth_date: new Date("1989-01-01"),
+        bio: null,
+        gender: null,
+        home_phone: null,
+        mobile_phone: null,
+        user_image: null,
+        is_active: 1,
+      },
+      {
+        id: 2,
+        name: "exampleName2",
+        last_name: "exampleLasName2",
+        username: "example2",
+        email: "email2@example.com",
+        birth_date: new Date("1989-01-01"),
+        bio: null,
+        gender: null,
+        home_phone: null,
+        mobile_phone: null,
+        user_image: null,
+        is_active: 1,
+      },
+    ],
+  })
+  @Get("/")
+  public async getAll(): Promise<User[]> {
+    return userService.getAll();
+  }
 
-export const createUser = async (req: Request<{}, {}, User, {}>, res: BaseResponse<User>) => {
-    await db.connect();
-    const { body: { email, name, last_name, password } } = req;
-    const user = await UserModel.create({
-        email,
-        name,
-        last_name,
-        password,
-        createdAt: Date.now(),
-        is_active: true
-    });
-    await db.disconnect();
+  /**
+   * 
+   * @param id 
+   * @param attributes 
+   * 
+   */
+  @Example<BaseJsonResponse<Partial<User>>>({
+    message: "Ok",
+    error: false,
+    code: 200,
+    result: {
+      id: 1,
+      name: "exampleName",
+      last_name: "exampleLasName",
+      username: "example",
+      email: "email@example.com",
+      birth_date: new Date("1989-01-01"),
+      bio: null,
+      gender: null,
+      home_phone: null,
+      mobile_phone: null,
+      user_image: null,
+      is_active: 1,
+    },
+  })
+  @Put("/:id")
+  public async update(
+    @Query() id: number,
+    @Body() attributes: User
+  ): Promise<User> {
+    return userService.update(id, attributes);
+  }
 
-    res.status(201).json({
-        ok: true,
-        message: 'user created',
-        result: user
-    });
-}
-
-export const getOneUserByEmail = async (req: Request<{}, {}, Partial<User>, {}>, res: BaseResponse<User>) => {
-    const { email } = req.body;
-
-    await db.connect();
-    const user = await UserModel.findOne({email});
-    await db.disconnect();
-
-    res.status(200).json({
-        ok: true,
-        message: 'user found',
-        result: user
-    });
-}
-
-export const getOneUserById = async (req: Request<{id: number}>, res: BaseResponse<User>) => {
-    const { id } = req.params;
-
-    await db.connect();
-    const user = await UserModel.findById(id);
-    await db.disconnect();
-
-    res.status(200).json({
-        ok: true,
-        message: 'user found',
-        result: user
-    })
-}
-
-export const updateUserById = async (req: Request<{id: number}, {}, Partial<User>, {}>, res: BaseResponse<boolean>) => {
-    const { id } = req.params;
-
-    await db.connect();
-    const result = await UserModel.updateOne({id}, req.body);
-    await db.disconnect();
-
-    res.status(200).json({
-        ok: true,
-        message: 'user updated',
-        result: !!result
-    });
-}
-
-export const deleteUserById = async (req: Request<{id: number}>, res: BaseResponse<boolean>) => {
-    const { id } = req.params;
-
-    await db.connect();
-    const result = await UserModel.deleteOne({id});
-    await db.disconnect();
-
-    res.status(200).json({
-        ok: true,
-        message: 'user deleted',
-        result: !!result
-    });
+  /**
+   * 
+   * @param id 
+   * 
+   */
+  @Example<BaseJsonResponse<Partial<User>>>({
+    message: 'Ok',
+    error: false,
+    code: 200,
+    result: null
+  })
+  @Delete('/:id')
+  public async delete(@Query() id: number): Promise<DeleteResult> {
+    return userService.delete(id);
+  }
 }
