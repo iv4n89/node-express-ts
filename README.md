@@ -140,7 +140,7 @@ The permission helper provide a method to entity classes to easily update permis
 
 ## <span style="color: darkgreen;">Copy .env.example as .env and fulfill the needed vars</span>
 
-Run mysql server and mongo db server locally with docker
+Run mysql server locally with docker
 ```
 $ docker-compose up -d
 ```
